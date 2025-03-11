@@ -70,6 +70,6 @@ class TimeManager {
   }
 };
 
-TimeData nulltimedata = {-1, -1, -1};
+TimeData TimeManager::nulltimedata = {-1, -1, -1};
 
 #endif
