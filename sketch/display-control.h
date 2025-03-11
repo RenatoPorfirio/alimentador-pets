@@ -17,17 +17,17 @@ class DisplayControl {
   
   public:
   void begin() {
-    show = true;
     DisplayControl::display.begin(SSD1306_SWITCHCAPVCC, 0x3C);
     DisplayControl::display.clearDisplay();
     DisplayControl::display.setTextSize(1);
 	  DisplayControl::display.setTextColor(WHITE);
     DisplayControl::display.setCursor(0, 0);
+    shouldDisplay(true);
   }
 
   void print(String str) {
     DisplayControl::display.print(str);
-    DisplayControl::display.display();
+    updateScreen();
   }
 
   void printAt(String str, int col, int row) {
@@ -35,7 +35,7 @@ class DisplayControl {
     print(str);
   }
 
-  void update() {
+  void updateScreen() {
     if (!show) return;
     DisplayControl::display.display();
   }
