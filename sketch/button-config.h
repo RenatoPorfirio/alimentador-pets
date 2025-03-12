@@ -18,16 +18,8 @@ void setupButtons() {
   forwardButton.setup(3);
   upButton.setup(4);
   downButton.setup(5);
-  menuButton.setup(6);
-  displayButton.setup(7);
-
-  buttons
-    .pushBack(&backButton)
-    .pushBack(&forwardButton)
-    .pushBack(&upButton)
-    .pushBack(&downButton)
-    .pushBack(&menuButton)
-    .pushBack(&displayButton);
+  menuButton.setup(6, false);
+  displayButton.setup(7, false);
 }
 
 #endif
