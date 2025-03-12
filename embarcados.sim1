@@ -21,7 +21,7 @@
 <item itemtype="Tunnel" CircId="Tunnel-21" mainComp="false" Show_id="false" Show_Val="false" Pos="-320,-148" rotation="-90" hflip="1" vflip="1" label="Tunnel-21" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Name="BACK" IsBus="false" />
 
 <item itemtype="Subcircuit" CircId="Uno-1" mainComp="false" Show_id="true" Show_Val="false" Pos="-148,-344" rotation="-90" hflip="1" vflip="1" label="Uno-1" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Logic_Symbol="false">
-<mainCompProps MainCompId="mega328-109" Frequency="16 MHz" Program="sketch/build/arduino.avr.uno/sketch.ino.hex" Auto_Load="true" saveEepr="true" MainMcu="true" eeprom="0,0,0,0,0,0," SerialMon="-1" />
+<mainCompProps MainCompId="mega328-109" Frequency="16 MHz" Program="sketch/build/arduino.avr.uno/sketch.ino.hex" Auto_Load="true" saveEepr="true" MainMcu="true" eeprom="0,0,0,0,0,0,0," SerialMon="-1" />
 </item>
 
 <item itemtype="Tunnel" CircId="Tunnel-33" mainComp="false" Show_id="false" Show_Val="false" Pos="-260,-152" rotation="-90" hflip="1" vflip="1" label="Tunnel-33" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Name="FWRD" IsBus="false" />
@@ -67,6 +67,8 @@
 <item itemtype="Node" CircId="Node-60" mainComp="false" Pos="-220,-116" />
 
 <item itemtype="Node" CircId="Node-63" mainComp="false" Pos="-344,-152" />
+
+<item itemtype="Node" CircId="Node-66" mainComp="false" Pos="-220,-152" />
 
 <item itemtype="Connector" uid="Connector-58" startpinid="Tunnel-27-pin" endpinid="Ssd1306-3-PinSda" pointList="-300,-200,-300,-208" />
 
@@ -118,6 +120,12 @@
 
 <item itemtype="Connector" uid="Connector-144" startpinid="Tunnel-65-pin" endpinid="DS1307-2-PinSCL" pointList="-44,-108,-40,-108" />
 
-<item itemtype="Connector" uid="Connector-145" startpinid="Node-59-1" endpinid="Node-60-1" pointList="-220,-172,-220,-116" />
+<item itemtype="Connector" uid="Connector-146" startpinid="Tunnel-33-pin" endpinid="Push-18-pinP0" pointList="-260,-152,-256,-152" />
+
+<item itemtype="Connector" uid="Connector-147" startpinid="Push-18-switch0pinN" endpinid="Node-66-1" pointList="-224,-152,-220,-152" />
+
+<item itemtype="Connector" uid="Connector-148" startpinid="Node-59-1" endpinid="Node-66-0" pointList="-220,-172,-220,-152" />
+
+<item itemtype="Connector" uid="Connector-149" startpinid="Node-66-2" endpinid="Node-60-1" pointList="-220,-152,-220,-116" />
 
 </circuit>
