@@ -12,7 +12,6 @@ TimeRegManager timeRegManager;
 void setupTime() {
   if (!rtc.begin()) {
     Serial.println("Couldn't find RTC");
-    Serial.flush();
     while(1) delay(10);
   }
 

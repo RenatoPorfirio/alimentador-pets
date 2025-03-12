@@ -25,6 +25,10 @@ class DisplayControl {
     shouldDisplay(true);
   }
 
+  void setCursor(int col, int row) {
+    DisplayControl::display.setCursor(col, row);
+  }
+
   void print(String str) {
     DisplayControl::display.print(str);
     updateScreen();
@@ -44,8 +48,17 @@ class DisplayControl {
     DisplayControl::display.clearDisplay();
   }
 
+  void eraseFrame(int col, int row, int width, int height) {
+    DisplayControl::display.fillRect(col, row, width, height, BLACK);
+    updateScreen();
+  }
+
   void shouldDisplay(bool state) {
-    if(!state) clear();
+    if(state) {
+      DisplayControl::display.ssd1306_command(SSD1306_DISPLAYON);
+    } else {
+      DisplayControl::display.ssd1306_command(SSD1306_DISPLAYOFF);
+    }
     show = state;
   }
 };

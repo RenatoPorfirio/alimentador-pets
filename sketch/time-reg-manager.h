@@ -61,6 +61,15 @@ class TimeRegManager {
     return reg;
   }
 
+  TimeData* getTimeRegCopy()
+  {
+    TimeData* copy = new TimeData[regQnt];
+    for(uint8_t i = 0; i < regQnt; i++) {
+      copy[i] = reg[i];
+    }
+    return copy;
+  }
+
   uint8_t getTimeRegQnt()
   {
     return regQnt;

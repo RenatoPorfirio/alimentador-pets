@@ -1,12 +1,6 @@
-#include "display-control.h"
-#include "button-config.h"
-#include "time-config.h"
-#include "LDE.h"
+#include "app-defs.h"
 
-#include <EEPROM.h>
-
-DisplayControl display;
-EnhancedTimeSpan *ref;
+MenuScreen menuScreen;
 
 double delta(double lastTime);
 
@@ -15,10 +9,18 @@ void setup() {
   display.begin();
   setupTime();
   setupButtons();
+  Serial.println("it works at main - line 11!");
+  menuScreen.begin();
+  Serial.println("it works at main - line 14!");
+  // Context::setCurrentScreen(&menuScreen);
+
 }
 
 void loop() {
   ClickButton::checkAllClicks();
+  // IScreen* currentScreen = Context::getCurrentScreen();
+  // if(currentScreen) currentScreen->render();
+  menuScreen.render();
 }
 
 double delta(double lastTime) {
