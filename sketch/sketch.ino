@@ -1,26 +1,30 @@
-#include "app-defs.h"
+#include "display-control.h"
+#include "button-config.h"
+#include "time-config.h"
+#include "screens.h"
 
+DisplayControl display;
 MenuScreen menuScreen;
+
+IScreen* currentScreen;
 
 double delta(double lastTime);
 
 void setup() {
   Serial.begin(9600);
+  while(!Serial.availableForWrite()) delay(10);
   display.begin();
-  setupTime();
   setupButtons();
-  Serial.println("it works at main - line 11!");
-  menuScreen.begin();
-  Serial.println("it works at main - line 14!");
-  // Context::setCurrentScreen(&menuScreen);
+  setupTime();
+  setupScreens(&display);
+  currentScreen = &menuScreen;
+  // Serial.println("it works at main - line 20!");
 
 }
 
 void loop() {
   ClickButton::checkAllClicks();
-  // IScreen* currentScreen = Context::getCurrentScreen();
-  // if(currentScreen) currentScreen->render();
-  menuScreen.render();
+  currentScreen->render();
 }
 
 double delta(double lastTime) {

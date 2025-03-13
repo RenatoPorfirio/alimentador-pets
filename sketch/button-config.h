@@ -11,8 +11,6 @@ ClickButton downButton;
 ClickButton menuButton;
 ClickButton displayButton;
 
-LDE<ClickButton*> buttons;
-
 void setupButtons() {
   backButton.setup(2);
   forwardButton.setup(3);

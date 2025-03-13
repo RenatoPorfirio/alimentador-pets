@@ -21,7 +21,7 @@ class DisplayControl {
     DisplayControl::display.clearDisplay();
     DisplayControl::display.setTextSize(1);
 	  DisplayControl::display.setTextColor(WHITE);
-    DisplayControl::display.setCursor(0, 0);
+    DisplayControl::display.setCursor(1, 1);
     shouldDisplay(true);
   }
 

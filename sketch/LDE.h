@@ -151,9 +151,9 @@ class LDE {
     return str;
   }
 
-  void forEach(void (*f)(T)) {
+  void forEach(void (*f)(T, void* params), void* params=nullptr) {
     for(LDENode<T>* x = head; x != nullptr; x = x->next) {
-      f(x->value);
+      f(x->value, params);
     }
   }
 };

@@ -57,13 +57,13 @@ class ClickButton {
   }
 
   static void checkAllClicks() {
-    ClickButton::allInstances.forEach([](ClickButton* button) {
+    ClickButton::allInstances.forEach([](ClickButton* button, void* params) {
       button->checkClick();
     });
   }
 
   static void resetDynamicInstances() {
-    ClickButton::dynamicInstances.forEach([](ClickButton* button) {
+    ClickButton::dynamicInstances.forEach([](ClickButton* button, void* params) {
       button->clickParams = nullptr;
       button->click = [](int pin, void* params){
         static bool state = HIGH;
@@ -74,7 +74,7 @@ class ClickButton {
   }
 
   static void resetAllInstances() {
-    ClickButton::allInstances.forEach([](ClickButton* button) {
+    ClickButton::allInstances.forEach([](ClickButton* button, void* params) {
       button->clickParams = nullptr;
       button->click = [](int pin, void* params){
         static bool state = HIGH;
