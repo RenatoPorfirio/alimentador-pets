@@ -4,9 +4,6 @@
 #include "screens.h"
 
 DisplayControl display;
-MenuScreen menuScreen;
-
-IScreen* currentScreen;
 
 double delta(double lastTime);
 
@@ -16,15 +13,14 @@ void setup() {
   display.begin();
   setupButtons();
   setupTime();
-  setupScreens(&display);
-  currentScreen = &menuScreen;
+  setCurrentScreen(new DisplayTimeScreen(&display));
   // Serial.println("it works at main - line 20!");
-
 }
 
 void loop() {
-  ClickButton::checkAllClicks();
+  IScreen* currentScreen = getCurrentScreen();
   currentScreen->render();
+  ClickButton::checkAllClicks();
 }
 
 double delta(double lastTime) {

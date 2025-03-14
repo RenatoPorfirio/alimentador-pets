@@ -50,12 +50,13 @@ class DisplayControl {
 
   void eraseFrame(int col, int row, int width, int height) {
     DisplayControl::display.fillRect(col, row, width, height, BLACK);
-    updateScreen();
   }
 
   void shouldDisplay(bool state) {
     if(state) {
       DisplayControl::display.ssd1306_command(SSD1306_DISPLAYON);
+      DisplayControl::display.ssd1306_command(SSD1306_SEGREMAP);
+      DisplayControl::display.ssd1306_command(SSD1306_COMSCANDEC);
     } else {
       DisplayControl::display.ssd1306_command(SSD1306_DISPLAYOFF);
     }

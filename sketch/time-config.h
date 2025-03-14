@@ -3,11 +3,13 @@
 
 #include "time-reg-manager.h"
 #include "enhanced-time-span.h"
+#include "LDE.h"
 
 #include <RTClib.h>
 
 RTC_DS1307 rtc;
 TimeRegManager timeRegManager;
+LDE<DateTime*> timeQueue;
 
 void setupTime() {
   if (!rtc.begin()) {
@@ -21,6 +23,8 @@ void setupTime() {
   }
 
   timeRegManager.begin();
+  DateTime now = rtc.now();
+  timeQueue.pushBack(new DateTime(now.year(), now.month(), now.day() + 1));
 }
 
 String timeDataToString(TimeData& dt) {

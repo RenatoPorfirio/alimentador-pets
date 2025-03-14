@@ -10,7 +10,6 @@ class ClickButton {
   void *clickParams;
 
   public:
-  static LDE<ClickButton*> staticInstances;
   static LDE<ClickButton*> dynamicInstances;
   static LDE<ClickButton*> allInstances;
   
@@ -22,7 +21,7 @@ class ClickButton {
   }
 
   void setup(int pin, bool isDynamic=true) {
-    isDynamic ? ClickButton::staticInstances.pushBack(this) : ClickButton::dynamicInstances.pushBack(this);
+    if(isDynamic) ClickButton::dynamicInstances.pushBack(this);
     ClickButton::allInstances.pushBack(this);
     this->pin = pin;
     this->clickParams = nullptr;
@@ -85,9 +84,7 @@ class ClickButton {
   }
 };
 
-LDE<ClickButton*> ClickButton::staticInstances;
 LDE<ClickButton*> ClickButton::dynamicInstances;
 LDE<ClickButton*> ClickButton::allInstances;
-  
 
 #endif

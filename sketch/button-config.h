@@ -11,6 +11,8 @@ ClickButton downButton;
 ClickButton menuButton;
 ClickButton displayButton;
 
+#include "screens.h"
+
 void setupButtons() {
   backButton.setup(2);
   forwardButton.setup(3);
@@ -18,6 +20,26 @@ void setupButtons() {
   downButton.setup(5);
   menuButton.setup(6, false);
   displayButton.setup(7, false);
+
+  menuButton.onClick([](int pin, void* params) {
+    IScreen* currentScreen = getCurrentScreen();
+    if(currentScreen && !currentScreen->getName().compareTo("MenuScreen")) {
+      setCurrentScreen(new DisplayTimeScreen(currentScreen->getDisplay()));
+    } else {
+      setCurrentScreen(new MenuScreen(currentScreen->getDisplay()));
+    }
+  });
+
+  displayButton.onClick([](int pin, void* params) {
+    static bool displayOn = true;
+    IScreen* currentScreen = getCurrentScreen();
+    if(!currentScreen) return;
+    DisplayControl* display = currentScreen->getDisplay();
+    
+    displayOn = !displayOn;
+    if(displayOn) currentScreen->begin(display);
+    display->shouldDisplay(displayOn);
+  });
 }
 
 #endif

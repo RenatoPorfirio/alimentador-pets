@@ -59,7 +59,7 @@
 <item itemtype="Tunnel" CircId="Tunnel-27" mainComp="false" Show_id="false" Show_Val="false" Pos="-300,-200" rotation="90" hflip="1" vflip="-1" label="Tunnel-27" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Name="SDA" IsBus="false" />
 
 <item itemtype="Subcircuit" CircId="Mega-82" mainComp="false" Show_id="true" Show_Val="false" Pos="-92,-392" rotation="-90" hflip="1" vflip="1" label="Mega-82" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Logic_Symbol="false">
-<mainCompProps MainCompId="mega2560-63" Frequency="16 MHz" Program="sketch/build/arduino.avr.mega/sketch.ino.hex" Auto_Load="false" saveEepr="true" MainMcu="true" eeprom="0," SerialMon="-1" />
+<mainCompProps MainCompId="mega2560-63" Frequency="16 MHz" Program="sketch/build/arduino.avr.mega/sketch.ino.hex" Auto_Load="false" saveEepr="true" MainMcu="true" eeprom="0,0," SerialMon="-1" />
 </item>
 
 <item itemtype="Node" CircId="Node-59" mainComp="false" Pos="-220,-172" />
@@ -68,7 +68,7 @@
 
 <item itemtype="Node" CircId="Node-63" mainComp="false" Pos="-344,-152" />
 
-<item itemtype="Node" CircId="Node-68" mainComp="false" Pos="-220,-152" />
+<item itemtype="Node" CircId="Node-83" mainComp="false" Pos="-220,-152" />
 
 <item itemtype="Connector" uid="Connector-74" startpinid="Push-18-pinP0" endpinid="Tunnel-21-pin" pointList="-312,-152,-320,-152,-320,-148" />
 
@@ -93,14 +93,6 @@
 <item itemtype="Connector" uid="Connector-141" startpinid="Tunnel-55-pin" endpinid="Node-63-0" pointList="-344,-180,-344,-152" />
 
 <item itemtype="Connector" uid="Connector-142" startpinid="Node-63-2" endpinid="Push-50-switch0pinN" pointList="-344,-152,-348,-152" />
-
-<item itemtype="Connector" uid="Connector-155" startpinid="Push-18-switch0pinN" endpinid="Node-68-1" pointList="-224,-152,-220,-152" />
-
-<item itemtype="Connector" uid="Connector-156" startpinid="Node-59-1" endpinid="Node-68-0" pointList="-220,-172,-220,-152" />
-
-<item itemtype="Connector" uid="Connector-157" startpinid="Node-68-2" endpinid="Node-60-1" pointList="-220,-152,-220,-116" />
-
-<item itemtype="Connector" uid="Connector-158" startpinid="Tunnel-33-pin" endpinid="Push-18-pinP0" pointList="-260,-152,-256,-152" />
 
 <item itemtype="Connector" uid="Connector-144" startpinid="Tunnel-65-pin" endpinid="DS1307-2-PinSCL" pointList="-44,-108,-40,-108" />
 
@@ -127,5 +119,13 @@
 <item itemtype="Connector" uid="Connector-218" startpinid="Tunnel-40-pin" endpinid="Mega-82-6" pointList="100,-124,100,-140,-4,-140,-4,-160" />
 
 <item itemtype="Connector" uid="Connector-219" startpinid="Tunnel-41-pin" endpinid="Mega-82-7" pointList="108,-124,108,-144,4,-144,4,-160" />
+
+<item itemtype="Connector" uid="Connector-221" startpinid="Push-18-switch0pinN" endpinid="Node-83-1" pointList="-224,-152,-220,-152" />
+
+<item itemtype="Connector" uid="Connector-222" startpinid="Node-59-1" endpinid="Node-83-0" pointList="-220,-172,-220,-152" />
+
+<item itemtype="Connector" uid="Connector-223" startpinid="Node-83-2" endpinid="Node-60-1" pointList="-220,-152,-220,-116" />
+
+<item itemtype="Connector" uid="Connector-224" startpinid="Push-18-pinP0" endpinid="Tunnel-33-pin" pointList="-256,-152,-260,-152" />
 
 </circuit>
