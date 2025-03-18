@@ -10,8 +10,36 @@
 RTC_DS1307 rtc;
 TimeRegManager timeRegManager;
 LDE<DateTime*> timeQueue;
+EnhancedTimeSpan timeRemaining;
+
+void addTime(DateTime& dt);
+void setupTime();
+String timeDataToString(TimeData& td, bool showSeconds=false);
+void timeRemainingUpdate();
+
+void addTime(DateTime& dt) {
+  TimeData* reg = timeRegManager.getTimeReg();
+  uint8_t timeQnt = timeRegManager.getTimeRegQnt();
+
+  if(timeQnt == TIME_REG_LIMIT) return;
+  
+  timeRegManager.addTimeData(dt.hour(), dt.minute(), dt.second());
+  DateTime now = rtc.now();
+  DateTime ndt(now.year(), now.month(), now.day(), dt.hour(), dt.minute(), dt.second());
+  timeQueue.pushBack(new DateTime(
+    ndt.year(),
+    ndt.month(),
+    ndt > now ? ndt.day() : ndt.day() + 1,
+    ndt.hour(),
+    ndt.minute(),
+    ndt.second()
+  ));
+}
 
 void setupTime() {
+  TimeData* reg;
+  uint8_t timeQnt;
+
   if (!rtc.begin()) {
     Serial.println("Couldn't find RTC");
     while(1) delay(10);
@@ -23,19 +51,56 @@ void setupTime() {
   }
 
   timeRegManager.begin();
+  // timeRegManager.memClear();
+  
+  reg = timeRegManager.getTimeReg();
+  timeQnt = timeRegManager.getTimeRegQnt();
   DateTime now = rtc.now();
-  timeQueue.pushBack(new DateTime(now.year(), now.month(), now.day() + 1));
+
+  for(uint8_t i = 0; i < timeQnt; i++) {
+    DateTime ndt(now.year(), now.month(), now.day(), reg[i].hr, reg[i].min, reg[i].sec);
+    timeQueue.pushBack(new DateTime(
+      ndt.year(),
+      ndt.month(),
+      ndt > now ? ndt.day() : ndt.day() + 1,
+      ndt.hour(),
+      ndt.minute(),
+      ndt.second()
+    ));
+  }
+
+  if(timeQnt == 0) {
+    DateTime ndt(now.year(), now.month(), now.day() + 1);
+    addTime(ndt);
+  } else if(timeQnt == 1) {
+    DateTime ndt(now.year(), now.month(), now.day() + 1, 1);
+    addTime(ndt);
+  } else if(timeQnt == 2) {
+    DateTime ndt(now.year(), now.month(), now.day() + 1, 2);
+    addTime(ndt);
+  } else if(timeQnt == 3) {
+    DateTime ndt(now.year(), now.month(), now.day() + 1, 3);
+    addTime(ndt);
+  } else if(timeQnt == 4) {
+    DateTime ndt(now.year(), now.month(), now.day() + 1, 4);
+    addTime(ndt);
+  }
+  timeRemainingUpdate();
 }
 
-String timeDataToString(TimeData& dt) {
+
+String timeDataToString(TimeData& td, bool showSeconds=false) {
   String str;
-  str.concat(dt.hr > 9 ? "" : "0");
-  str.concat(String(dt.hr, 10) + ":");
-  str.concat(dt.min > 9 ? "" : "0");
-  str.concat(String(dt.min, 10) + ":");
-  str.concat(dt.sec > 9 ? "" : "0");
-  str.concat(String(dt.sec, 10));
+  str += (td.hr < 10 ? "0" : "") + String(td.hr, 10) + "h";
+  str += String(":") + (td.min < 10 ? "0" : "") + String(td.min, 10) + "m";
+  if(showSeconds) str += String(":") + (td.sec < 10 ? "0" : "") + String(td.sec, 10) + "s";
   return str;
 }
+
+void timeRemainingUpdate() {
+  DateTime now = rtc.now();
+  timeRemaining = EnhancedTimeSpan(*timeQueue.first() - now);
+}
+
 
 #endif

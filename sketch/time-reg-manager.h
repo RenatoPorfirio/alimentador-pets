@@ -14,25 +14,26 @@ typedef struct {
 class TimeRegManager {
   static TimeData nulltimedata;
   TimeData reg[TIME_REG_LIMIT];
-  uint8_t regQnt = 0;
+  uint8_t regQnt;
 
   public:
   void begin() {
-    uint8_t timeQnt = EEPROM.read(0);
-    if (timeQnt > TIME_REG_LIMIT) {
-      timeQnt = 0;
+    regQnt = EEPROM.read(0);
+    if (regQnt > TIME_REG_LIMIT) {
+      regQnt = 0;
       TimeRegManager::memClear();
     }
-    for (uint8_t i = 0; i < timeQnt; i++) {
+    for (uint8_t i = 0; i < regQnt; i++) {
       TimeData time;
       EEPROM.get(1 + i * sizeof(TimeData), time);
       reg[i] = time;
     }
   }
 
-  static void memClear() {
+  void memClear() {
     Serial.println("clear");
     EEPROM.write(0, 0);
+    regQnt = 0;
   }
 
   void addTimeData(uint8_t hour, uint8_t minute, uint8_t second) {
@@ -43,8 +44,7 @@ class TimeRegManager {
     EEPROM.write(0, ++regQnt);
   }
 
-  void removeTimeData(int8_t index)
-  {
+  void removeTimeData(int8_t index) {
     if (regQnt == 0) return;
     TimeData target = reg[index];
     regQnt--;
@@ -56,13 +56,11 @@ class TimeRegManager {
     EEPROM.write(0, regQnt);
   }
 
-  TimeData* getTimeReg()
-  {
+  TimeData* getTimeReg() {
     return reg;
   }
 
-  TimeData* getTimeRegCopy()
-  {
+  TimeData* getTimeRegCopy() {
     TimeData* copy = new TimeData[regQnt];
     for(uint8_t i = 0; i < regQnt; i++) {
       copy[i] = reg[i];
@@ -70,8 +68,7 @@ class TimeRegManager {
     return copy;
   }
 
-  uint8_t getTimeRegQnt()
-  {
+  uint8_t getTimeRegQnt() {
     return regQnt;
   }
 };

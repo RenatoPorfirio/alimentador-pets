@@ -11,7 +11,7 @@ ClickButton downButton;
 ClickButton menuButton;
 ClickButton displayButton;
 
-#include "screens.h"
+#include "screens/screens.h"
 
 void setupButtons() {
   backButton.setup(2);

@@ -27,7 +27,7 @@ class EnhancedTimeSpan : public TimeSpan {
       *static_cast<TimeSpan*>(this) = TimeSpan(newSeconds);
     }
 
-    String toString() const {
+    String toString(bool showSeconds=true) const {
       int32_t totalSecs = this->totalseconds();
       int32_t absSecs = totalSecs >= 0 ? totalSecs : -totalSecs;
 
@@ -36,9 +36,9 @@ class EnhancedTimeSpan : public TimeSpan {
       int8_t seconds = absSecs % 60;
 
       String str;
-      str += (hours < 10 ? "0" : "") + String(hours, 10) + ":";
-      str += (minutes < 10 ? "0" : "") + String(minutes, 10) + ":";
-      str += (seconds < 10 ? "0" : "") + String(seconds, 10);
+      str += (hours < 10 ? "0" : "") + String(hours, 10) + "h";
+      str += String(":") + (minutes < 10 ? "0" : "") + String(minutes, 10) + "m";
+      if(showSeconds) str += String(":") + (seconds < 10 ? "0" : "") + String(seconds, 10) + "s";
       return str;
     }
 

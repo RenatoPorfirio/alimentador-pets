@@ -1,7 +1,7 @@
 #include "display-control.h"
 #include "button-config.h"
 #include "time-config.h"
-#include "screens.h"
+#include "screens/screens.h"
 
 DisplayControl display;
 
@@ -18,6 +18,12 @@ void setup() {
 }
 
 void loop() {
+  static double lastTime = 0;
+  double dt = delta(lastTime);
+  if(dt > 1000) {
+    timeRemaining.decrease(1);
+    lastTime += dt;
+  }
   IScreen* currentScreen = getCurrentScreen();
   currentScreen->render();
   ClickButton::checkAllClicks();

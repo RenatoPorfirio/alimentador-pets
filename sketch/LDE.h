@@ -112,6 +112,7 @@ class LDE {
     if(next) next->prev = prev;
     x->prev = x->next = nullptr;
     delete x;
+    length--;
     return value;
   }
 
@@ -119,7 +120,7 @@ class LDE {
     int index = 0;
     LDENode<T> *x;
     for(x = head; x != nullptr; x = x->next, index++) {
-      if(eval(x->value, value)) break;
+      if(eval(value, x->value)) break;
     }
     if (index == length) return -1;
     return index;

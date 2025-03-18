@@ -59,7 +59,7 @@
 <item itemtype="Tunnel" CircId="Tunnel-27" mainComp="false" Show_id="false" Show_Val="false" Pos="-300,-200" rotation="90" hflip="1" vflip="-1" label="Tunnel-27" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Name="SDA" IsBus="false" />
 
 <item itemtype="Subcircuit" CircId="Mega-82" mainComp="false" Show_id="true" Show_Val="false" Pos="-92,-392" rotation="-90" hflip="1" vflip="1" label="Mega-82" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Logic_Symbol="false">
-<mainCompProps MainCompId="mega2560-63" Frequency="16 MHz" Program="sketch/build/arduino.avr.mega/sketch.ino.hex" Auto_Load="false" saveEepr="true" MainMcu="true" eeprom="0,0," SerialMon="-1" />
+<mainCompProps MainCompId="mega2560-63" Frequency="16 MHz" Program="sketch/build/arduino.avr.mega/sketch.ino.hex" Auto_Load="true" saveEepr="true" MainMcu="true" eeprom="3,0,0,0,1,0,0,2,0,0,3,0,0,4,0,0," SerialMon="-1" />
 </item>
 
 <item itemtype="Node" CircId="Node-59" mainComp="false" Pos="-220,-172" />
@@ -126,6 +126,6 @@
 
 <item itemtype="Connector" uid="Connector-223" startpinid="Node-83-2" endpinid="Node-60-1" pointList="-220,-152,-220,-116" />
 
-<item itemtype="Connector" uid="Connector-224" startpinid="Push-18-pinP0" endpinid="Tunnel-33-pin" pointList="-256,-152,-260,-152" />
+<item itemtype="Connector" uid="Connector-224" startpinid="Tunnel-33-pin" endpinid="Push-18-pinP0" pointList="-260,-152,-256,-152" />
 
 </circuit>
