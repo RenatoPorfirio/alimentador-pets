@@ -52,6 +52,7 @@ void MenuScreen::setup() {
   context->currentOption = 0;
   context->shouldUpdateScreen = true;
   context->shouldUpdateOption = true;
+  context->display = display;
   ClickButton::resetDynamicInstances();
 
   downButton.onClick([](int pin, void* params) {
@@ -82,6 +83,9 @@ void MenuScreen::setup() {
     switch(context->currentOption) {
       case 0:
         setCurrentScreen(new DisplaySchedulesScreen((DisplayControl*)params));
+        break;
+      case 1:
+        setCurrentScreen(new AddTimeScreen((DisplayControl*)params));
         break;
       case 2:
         setCurrentScreen(new RemoveTimeScreen((DisplayControl*)params));

@@ -56,6 +56,7 @@ void RemoveTimeScreen::setup() {
   context->currentOption = 0;
   context->shouldUpdateScreen = true;
   context->shouldUpdateOption = true;
+  context->display = display;
   ClickButton::resetDynamicInstances();
 
   downButton.onClick([](int pin, void* params) {
@@ -88,10 +89,9 @@ void RemoveTimeScreen::setup() {
     uint8_t currentOption = context->currentOption;
     DateTime now = rtc.now();
     DateTime* dt = new DateTime(now.year(), now.month(), now.day(), timeReg[currentOption].hr, timeReg[currentOption].min, timeReg[currentOption].sec);
-    int8_t queueIndex = timeQueue.getIndex(dt, [](DateTime* a, DateTime* b) {
+    timeQueue.remove(dt, [](DateTime* a, DateTime* b) {
       return a->hour() == b->hour() && a->minute() == b->minute() && a->second() == b->second();
     });
-    if(queueIndex != -1) timeQueue.remove(queueIndex);
     timeRegManager.removeTimeData(currentOption);
     delete dt;
     timeRemainingUpdate();

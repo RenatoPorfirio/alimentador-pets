@@ -38,7 +38,7 @@ void DisplayTimeScreen::render() {
   }
   if(timeQueue.size() > 0 && currentTime - lastTime > 1000) {
     display->eraseFrame(1, 25, 59, 8);
-    display->printAt(timeRemaining.toString(false), 1, 25);
+    display->printAt(timeRemaining.toString(), 1, 25);
     lastTime = currentTime;
   }
 }
@@ -50,5 +50,6 @@ void DisplayTimeScreen::setup() {
   context->currentOption = 0;
   context->shouldUpdateScreen = true;
   context->shouldUpdateOption = true;
+  context->display = display;
   ClickButton::resetDynamicInstances();
 }

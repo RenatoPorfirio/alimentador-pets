@@ -52,6 +52,7 @@ void DisplaySchedulesScreen::setup() {
   context->currentOption = 0;
   context->shouldUpdateScreen = true;
   context->shouldUpdateOption = true;
+  context->display = display;
   ClickButton::resetDynamicInstances();
 
   backButton.onClick([](int pin, void* params) {

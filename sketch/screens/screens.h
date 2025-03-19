@@ -10,6 +10,7 @@ typedef struct {
   uint8_t currentOption;
   bool shouldUpdateScreen;
   bool shouldUpdateOption;
+  DisplayControl* display;
 } ScreenContext;
 
 class IScreen {
@@ -34,7 +35,8 @@ ScreenContext IScreen::currentScreenContext = {
   3,
   0,
   true,
-  true
+  true,
+  nullptr
 };
 
 
@@ -116,9 +118,27 @@ class RemoveTimeScreen : public IScreen {
   void setup();
 };
 
+class AddTimeScreen : public IScreen {
+  uint8_t options[2];
+  uint8_t optionsQnt;
+  DisplayControl* display;
+  
+  public:
+  AddTimeScreen();
+  AddTimeScreen(DisplayControl* display);
+  void begin(DisplayControl* display);
+  String getName();
+  String* getOptions();
+  uint8_t getOptionsQnt();
+  DisplayControl* getDisplay();
+  void render();
+  void setup();
+};
+
 #include "menu-screen.h"
 #include "display-time-screen.h"
 #include "display-schedules-screen.h"
 #include "remove-time-screen.h"
+#include "add-time-screen.h"
 
 #endif

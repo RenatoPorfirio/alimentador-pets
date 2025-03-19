@@ -3,37 +3,42 @@
 
 #include "time-reg-manager.h"
 #include "enhanced-time-span.h"
-#include "LDE.h"
+#include "enhanced-date-time.h"
+#include "min-heap.h"
 
 #include <RTClib.h>
 
 RTC_DS1307 rtc;
 TimeRegManager timeRegManager;
-LDE<DateTime*> timeQueue;
+MinHeap<EnhancedDateTime*> timeQueue;
 EnhancedTimeSpan timeRemaining;
 
-void addTime(DateTime& dt);
+void addTime(TimeData& td);
 void setupTime();
 String timeDataToString(TimeData& td, bool showSeconds=false);
 void timeRemainingUpdate();
 
-void addTime(DateTime& dt) {
+
+void addTime(TimeData& td) {
   TimeData* reg = timeRegManager.getTimeReg();
   uint8_t timeQnt = timeRegManager.getTimeRegQnt();
 
-  if(timeQnt == TIME_REG_LIMIT) return;
+  if(timeRegManager.isFull()) return;
   
-  timeRegManager.addTimeData(dt.hour(), dt.minute(), dt.second());
+  timeRegManager.addTimeData(td.hr, td.min, td.sec);
   DateTime now = rtc.now();
-  DateTime ndt(now.year(), now.month(), now.day(), dt.hour(), dt.minute(), dt.second());
-  timeQueue.pushBack(new DateTime(
+  DateTime ndt(now.year(), now.month(), now.day(), td.hr, td.min, td.sec);
+  DateTime *result = new EnhancedDateTime(
     ndt.year(),
     ndt.month(),
     ndt > now ? ndt.day() : ndt.day() + 1,
     ndt.hour(),
     ndt.minute(),
-    ndt.second()
-  ));
+    ndt.second(),
+    timeQnt
+  );
+  timeQueue.push(result);
+  timeRemainingUpdate();
 }
 
 void setupTime() {
@@ -59,32 +64,33 @@ void setupTime() {
 
   for(uint8_t i = 0; i < timeQnt; i++) {
     DateTime ndt(now.year(), now.month(), now.day(), reg[i].hr, reg[i].min, reg[i].sec);
-    timeQueue.pushBack(new DateTime(
+    timeQueue.push(new EnhancedDateTime(
       ndt.year(),
       ndt.month(),
       ndt > now ? ndt.day() : ndt.day() + 1,
       ndt.hour(),
       ndt.minute(),
-      ndt.second()
+      ndt.second(),
+      i
     ));
   }
 
-  if(timeQnt == 0) {
-    DateTime ndt(now.year(), now.month(), now.day() + 1);
-    addTime(ndt);
-  } else if(timeQnt == 1) {
-    DateTime ndt(now.year(), now.month(), now.day() + 1, 1);
-    addTime(ndt);
-  } else if(timeQnt == 2) {
-    DateTime ndt(now.year(), now.month(), now.day() + 1, 2);
-    addTime(ndt);
-  } else if(timeQnt == 3) {
-    DateTime ndt(now.year(), now.month(), now.day() + 1, 3);
-    addTime(ndt);
-  } else if(timeQnt == 4) {
-    DateTime ndt(now.year(), now.month(), now.day() + 1, 4);
-    addTime(ndt);
-  }
+  // if(timeQnt == 0) {
+  //   DateTime ndt(now.year(), now.month(), now.day() + 1);
+  //   addTime(ndt);
+  // } else if(timeQnt == 1) {
+  //   DateTime ndt(now.year(), now.month(), now.day() + 1, 1);
+  //   addTime(ndt);
+  // } else if(timeQnt == 2) {
+  //   DateTime ndt(now.year(), now.month(), now.day() + 1, 2);
+  //   addTime(ndt);
+  // } else if(timeQnt == 3) {
+  //   DateTime ndt(now.year(), now.month(), now.day() + 1, 3);
+  //   addTime(ndt);
+  // } else if(timeQnt == 4) {
+  //   DateTime ndt(now.year(), now.month(), now.day() + 1, 4);
+  //   addTime(ndt);
+  // }
   timeRemainingUpdate();
 }
 
@@ -98,9 +104,12 @@ String timeDataToString(TimeData& td, bool showSeconds=false) {
 }
 
 void timeRemainingUpdate() {
+  if(timeRegManager.isEmpty()) {
+    timeRemaining = EnhancedTimeSpan();
+    return;
+  }
   DateTime now = rtc.now();
-  timeRemaining = EnhancedTimeSpan(*timeQueue.first() - now);
+  timeRemaining = EnhancedTimeSpan(*timeQueue.top() - now);
 }
-
 
 #endif

@@ -71,6 +71,14 @@ class TimeRegManager {
   uint8_t getTimeRegQnt() {
     return regQnt;
   }
+
+  bool isFull() {
+    return regQnt == TIME_REG_LIMIT;
+  }
+
+  bool isEmpty() {
+    return regQnt == 0;
+  }
 };
 
 TimeData TimeRegManager::nulltimedata = {-1, -1, -1};

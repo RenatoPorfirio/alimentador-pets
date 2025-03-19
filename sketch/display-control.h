@@ -35,8 +35,20 @@ class DisplayControl {
   }
 
   void printAt(String str, int col, int row) {
-    DisplayControl::display.setCursor(col, row);
+    setCursor(col, row);
     print(str);
+  }
+
+  void printBigger(String str, int size=2) {
+    DisplayControl::display.setTextSize(size);
+    print(str);
+    DisplayControl::display.setTextSize(1);
+  }
+
+  void printBiggerAt(String str, int col, int row, int size=2) {
+    DisplayControl::display.setTextSize(size);
+    printAt(str, col, row);
+    DisplayControl::display.setTextSize(1);
   }
 
   void updateScreen() {

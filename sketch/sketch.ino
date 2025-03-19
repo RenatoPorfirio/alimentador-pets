@@ -13,7 +13,7 @@ void setup() {
   display.begin();
   setupButtons();
   setupTime();
-  setCurrentScreen(new DisplayTimeScreen(&display));
+  setCurrentScreen(new MenuScreen(&display));
   // Serial.println("it works at main - line 20!");
 }
 
@@ -22,6 +22,9 @@ void loop() {
   double dt = delta(lastTime);
   if(dt > 1000) {
     timeRemaining.decrease(1);
+    if(timeRemaining.totalseconds() <= 0 && timeQueue.size() > 0) {
+      Serial.println("Starting routine...");
+    }
     lastTime += dt;
   }
   IScreen* currentScreen = getCurrentScreen();
