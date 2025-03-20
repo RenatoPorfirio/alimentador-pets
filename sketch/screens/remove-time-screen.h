@@ -89,12 +89,13 @@ void RemoveTimeScreen::setup() {
     uint8_t currentOption = context->currentOption;
     DateTime now = rtc.now();
     DateTime* dt = new DateTime(now.year(), now.month(), now.day(), timeReg[currentOption].hr, timeReg[currentOption].min, timeReg[currentOption].sec);
-    timeQueue.remove(dt, [](DateTime* a, DateTime* b) {
+    EnhancedDateTime* result = timeQueue.remove(dt, [](DateTime* a, DateTime* b) {
       return a->hour() == b->hour() && a->minute() == b->minute() && a->second() == b->second();
     });
+    delete result;
     timeRegManager.removeTimeData(currentOption);
     delete dt;
     timeRemainingUpdate();
-    setCurrentScreen(new MenuScreen((DisplayControl*)params));
+    setCurrentScreen(new DisplaySchedulesScreen((DisplayControl*)params));
   }, display);
 }

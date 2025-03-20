@@ -1,48 +1,46 @@
 #include "../time-config.h"
 
-AddTimeScreen::AddTimeScreen() {
+ClockConfigScreen::ClockConfigScreen() {
   IScreen::screens.pushBack((IScreen*)this);
 }
   
-AddTimeScreen::AddTimeScreen(DisplayControl* display) {
-  AddTimeScreen();
+ClockConfigScreen::ClockConfigScreen(DisplayControl* display) {
+  ClockConfigScreen();
   begin(display);
 }
  
-void AddTimeScreen::begin(DisplayControl* display) {
+void ClockConfigScreen::begin(DisplayControl* display) {
   optionsQnt = 2;
   options[0] = 0;
   options[1] = 0;
   this->display = display;
   setup();
 }
-  
-String AddTimeScreen::getName() { return String("AddTimeScreen"); }
-String* AddTimeScreen::getOptions() { return nullptr; }
-uint8_t AddTimeScreen::getOptionsQnt() { return optionsQnt; }
-DisplayControl* AddTimeScreen::getDisplay() { return display; }
 
-void AddTimeScreen::render() {
+String ClockConfigScreen::getName() { return String("ClockConfigScreen"); }
+String* ClockConfigScreen::getOptions() { return nullptr; }
+uint8_t ClockConfigScreen::getOptionsQnt() { return optionsQnt; }
+DisplayControl* ClockConfigScreen::getDisplay() { return display; }
+
+void ClockConfigScreen::render() {
     ScreenContext* context = getContext();
     if(context->shouldUpdateScreen) {
       context->shouldUpdateScreen = false;
       display->clear();
 
       if(timeRegManager.isFull()) {
-        display->printAt("Nao e possivel", 21, 12);
-      display->printAt("agendar mais", 25, 21);
-      display->printAt("horarios", 36, 31);
-        display->printAt("Limite: ", 33, 44);
+        display->printAt("Nao e possivel", 1, 1);
+        display->printAt("agendar mais", 1, 2);
+        display->printAt("horarios", 1, 3);
+        display->printAt("Limite: ", 1, 4);
         display->print(String(TIME_REG_LIMIT));
-        context->shouldUpdateOption = false;
         return;
       }
       
-      display->printAt("Agendando um horario:", 1, 1);
+      display->printAt("Configurar relogio:", 1, 1);
       display->printBiggerAt(":00", 57, 27);
       display->printAt("hh    mm", 39, 43);
     }
-    
     if(context->shouldUpdateOption) {
       context->shouldUpdateOption = false;
         display->eraseFrame(37, 17, 60, 8);
@@ -58,7 +56,7 @@ void AddTimeScreen::render() {
     }
 }
   
-void AddTimeScreen::setup() {
+void ClockConfigScreen::setup() {
   ScreenContext* context = getContext();
   context->name = String(getName());
   context->optionsQnt = optionsQnt;
@@ -114,9 +112,7 @@ void AddTimeScreen::setup() {
       context->shouldUpdateOption = true;
     } else {
       options[1] = currentOption - 100;
-      TimeData timeData = {options[0], options[1], 0};
-      addTime(timeData);
-      setCurrentScreen(new DisplayTimeScreen(context->display));
+      setCurrentScreen(new DisplaySchedulesScreen(context->display));
     }
   }, (void*)options);
 
