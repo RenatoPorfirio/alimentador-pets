@@ -16,7 +16,7 @@
 
 <item itemtype="Tunnel" CircId="Tunnel-34" mainComp="false" Show_id="false" Show_Val="false" Pos="-220,-180" rotation="-270" hflip="1" vflip="1" label="Tunnel-34" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Name="VCC" IsBus="false" />
 
-<item itemtype="Tunnel" CircId="Tunnel-36" mainComp="false" Show_id="false" Show_Val="false" Pos="36,-348" rotation="-270" hflip="1" vflip="1" label="Tunnel-36" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Name="VCC" IsBus="false" />
+<item itemtype="Tunnel" CircId="Tunnel-36" mainComp="false" Show_id="false" Show_Val="false" Pos="36,-316" rotation="-270" hflip="1" vflip="1" label="Tunnel-36" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Name="VCC" IsBus="false" />
 
 <item itemtype="Tunnel" CircId="Tunnel-37" mainComp="false" Show_id="false" Show_Val="false" Pos="76,-124" rotation="-90" hflip="1" vflip="1" label="Tunnel-37" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Name="FWRD" IsBus="false" />
 
@@ -59,8 +59,18 @@
 <item itemtype="Tunnel" CircId="Tunnel-27" mainComp="false" Show_id="false" Show_Val="false" Pos="-300,-200" rotation="90" hflip="1" vflip="-1" label="Tunnel-27" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Name="SDA" IsBus="false" />
 
 <item itemtype="Subcircuit" CircId="Mega-82" mainComp="false" Show_id="true" Show_Val="false" Pos="-92,-392" rotation="-90" hflip="1" vflip="1" label="Mega-82" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Logic_Symbol="false">
-<mainCompProps MainCompId="mega2560-63" Frequency="16 MHz" Program="sketch/build/arduino.avr.mega/sketch.ino.hex" Auto_Load="true" saveEepr="true" MainMcu="true" eeprom="5,0,0,0,1,0,0,2,0,0,3,0,0,4,0,0,0,0," SerialMon="-1" />
+<mainCompProps MainCompId="mega2560-63" Frequency="16 MHz" Program="sketch/build/arduino.avr.mega/sketch.ino.hex" Auto_Load="true" saveEepr="true" MainMcu="true" eeprom="1,22,50,0,22,50,0,21,33,0,21,23,0,21,23,0,0,0,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,255,0,92,120,57," SerialMon="-1" />
 </item>
+
+<item itemtype="Servo" CircId="Servo-86" mainComp="false" Show_id="true" Show_Val="false" Pos="-100,-64" rotation="0" hflip="1" vflip="1" label="Servo-86" idLabPos="-16,-40" labelrot="0" valLabPos="-16,20" valLabRot="0" Speed="0.2 _s/60º" MinPulse="1000 _µs" MaxPulse="2000 _µs" Input_High_V="2.5 V" Input_Low_V="2.5 V" Input_Imped="1000 MΩ" />
+
+<item itemtype="Battery" CircId="Battery-87" mainComp="false" Show_id="false" Show_Val="false" Pos="-172,-64" rotation="-180" hflip="-1" vflip="1" label="Battery-87" idLabPos="-18,-22" labelrot="0" valLabPos="-10,10" valLabRot="0" Voltage="5 V" Resistance="1 mΩ" />
+
+<item itemtype="Resistor" CircId="Resistor-89" mainComp="false" ShowProp="Resistance" Show_id="false" Show_Val="true" Pos="-176,-80" rotation="0" hflip="1" vflip="-1" label="Resistor-89" idLabPos="-16,-24" labelrot="0" valLabPos="-16,6" valLabRot="0" Resistance="76 Ω" />
+
+<item itemtype="Tunnel" CircId="Tunnel-92" mainComp="false" Show_id="false" Show_Val="false" Pos="-168,-48" rotation="0" hflip="1" vflip="1" label="Tunnel-92" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Name="SERVO" IsBus="false" />
+
+<item itemtype="Tunnel" CircId="Tunnel-93" mainComp="false" Show_id="false" Show_Val="false" Pos="132,-124" rotation="90" hflip="1" vflip="-1" label="Tunnel-93" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Name="SERVO" IsBus="false" />
 
 <item itemtype="Node" CircId="Node-59" mainComp="false" Pos="-220,-172" />
 
@@ -102,7 +112,7 @@
 
 <item itemtype="Connector" uid="Connector-58" startpinid="Tunnel-27-pin" endpinid="Ssd1306-3-PinSda" pointList="-300,-200,-300,-208" />
 
-<item itemtype="Connector" uid="Connector-207" startpinid="Tunnel-36-pin" endpinid="Mega-82-5V00" pointList="36,-348,36,-304" />
+<item itemtype="Connector" uid="Connector-207" startpinid="Tunnel-36-pin" endpinid="Mega-82-5V00" pointList="36,-316,36,-304" />
 
 <item itemtype="Connector" uid="Connector-212" startpinid="Tunnel-23-pin" endpinid="Mega-82-21" pointList="-124,-136,-124,-160" />
 
@@ -127,5 +137,15 @@
 <item itemtype="Connector" uid="Connector-231" startpinid="Node-85-2" endpinid="Node-60-1" pointList="-220,-152,-220,-116" />
 
 <item itemtype="Connector" uid="Connector-232" startpinid="Push-18-pinP0" endpinid="Tunnel-33-pin" pointList="-256,-152,-260,-152" />
+
+<item itemtype="Connector" uid="Connector-238" startpinid="Battery-87-rPin" endpinid="Servo-86-in1" pointList="-156,-64,-148,-64" />
+
+<item itemtype="Connector" uid="Connector-244" startpinid="Resistor-89-rPin" endpinid="Servo-86-in0" pointList="-160,-80,-148,-80" />
+
+<item itemtype="Connector" uid="Connector-245" startpinid="Battery-87-lPin" endpinid="Resistor-89-lPin" pointList="-188,-64,-196,-64,-196,-80,-192,-80" />
+
+<item itemtype="Connector" uid="Connector-247" startpinid="Tunnel-92-pin" endpinid="Servo-86-in2" pointList="-168,-48,-148,-48" />
+
+<item itemtype="Connector" uid="Connector-248" startpinid="Tunnel-93-pin" endpinid="Mega-82-8" pointList="132,-124,132,-148,20,-148,20,-160" />
 
 </circuit>
