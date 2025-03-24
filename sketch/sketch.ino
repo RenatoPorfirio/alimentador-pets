@@ -3,10 +3,9 @@
 #include "button-config.h"
 #include "time-config.h"
 #include "screens/screens.h"
+#include "routine-config.h"
 
 DisplayControl display;
-ServoControl servo;
-int secondsToWait = 5;
 
 double delta(double lastTime);
 
@@ -14,12 +13,9 @@ void setup() {
   Serial.begin(9600);
   while (!Serial.availableForWrite()) delay(10);
   display.begin();
-  servo.config(120, 92, 0);
-  servo.begin(8);
-  servo.calibrate();
-  
   setupButtons();
   setupTime();
+  setupRoutine(true);
   setCurrentScreen(new DisplayTimeScreen(&display));
 }
 

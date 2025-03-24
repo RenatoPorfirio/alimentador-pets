@@ -13,7 +13,6 @@
 class ServoControl {
   int pin;
   Servo servo;
-  bool moving;
   uint8_t speed;
   uint8_t maxPos;
   uint8_t minPos;
@@ -25,14 +24,6 @@ class ServoControl {
     this->pin = pin;
     servo.attach(pin);
     if(EEPROM.read(CONFIG_ADDR) != CONFIG_FLAG) config();
-  }
-
-  void attach() {
-    servo.attach(pin, 500, 2500);
-  }
-
-  void detach() {
-    servo.detach();
   }
 
   void goTo(int targetPos) {
@@ -52,10 +43,18 @@ class ServoControl {
     goTo(minPos);
   }
 
+  bool isConfig() {
+    return !(EEPROM.read(CONFIG_ADDR) ^ CONFIG_FLAG);
+  }
+
   void calibrate() {
     goToMax();
     goToMin();
   }
+
+  uint8_t getSpeed() { return speed; }
+  uint8_t getMinPos() { return minPos; }
+  uint8_t getMaxPos() { return maxPos; }
 
   void config(uint8_t speed=255, uint8_t maxPos=180, uint8_t minPos=0) {
     this->speed = speed ? speed : 1;
