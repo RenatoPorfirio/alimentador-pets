@@ -79,7 +79,7 @@ void AddTimeScreen::setup() {
     return;
   }
 
-  downButton.onClick([](int pin, void* params) {
+  upButton.onClick([](int pin, void* params) {
     ScreenContext* context = getContext();
     uint8_t optionsQnt = context->optionsQnt;
     uint8_t currentOption = context->currentOption;
@@ -91,7 +91,7 @@ void AddTimeScreen::setup() {
     context->shouldUpdateOption = true;
   }, nullptr);
 
-  upButton.onClick([](int pin, void* params) {
+  downButton.onClick([](int pin, void* params) {
     ScreenContext* context = getContext();
     uint8_t optionsQnt = context->optionsQnt;
     uint8_t currentOption = context->currentOption;

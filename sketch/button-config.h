@@ -13,6 +13,11 @@ ClickButton displayButton;
 
 #include "screens/screens.h"
 
+/**
+ * Configuração dos botões
+ * - Configura os botões de controle
+ * - Configura os botões de menu e display
+ */
 void setupButtons() {
   backButton.setup(2);
   forwardButton.setup(3);

@@ -3,6 +3,12 @@
 
 #include <RTClib.h>
 
+/**
+ * Classe que extende a classe TimeSpan do RTClib
+ * Adiciona um índice para identificação do objeto
+ * Adiciona métodos para decrementar o tempo e obter uma string formatada
+ * Adiciona um método para obter uma string de debug
+ */
 class EnhancedTimeSpan : public TimeSpan {
   public:
     int8_t index;

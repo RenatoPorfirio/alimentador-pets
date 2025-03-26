@@ -3,6 +3,33 @@
 
 #include "LDE.h";
 
+/**
+ * Classe para controle de cliques de botões
+ * - Permite configurar um callback para ser chamado quando o botão é pressionado
+ * - Permite configurar um parâmetro para ser passado ao callback
+ * - Permite configurar um botão como dinâmico, para ser resetado automaticamente
+ * - Permite configurar um botão como estático, para ser resetado manualmente
+ * Propriedades:
+ * - pin: Pino do botão
+ * - pressed: Estado do botão
+ * - click: Callback para ser chamado quando o botão é pressionado
+ * - clickParams: Parâmetro a ser passado ao callback
+ * Métodos:
+ * - setup: Configura o botão
+ * - checkClick: Verifica se o botão foi pressionado
+ * - onClick: Configura o callback a ser chamado quando o botão é pressionado
+ * - getPin: Retorna o pino do botão
+ * - checkAllClicks: Verifica se todos os botões foram pressionados
+ * - resetDynamicInstances: Reseta todos os botões dinâmicos
+ * - resetAllInstances: Reseta todos os botões estáticos
+ * Propriedades estáticas:
+ * - dynamicInstances: Lista de botões dinâmicos
+ * - allInstances: Lista de todos os botões
+ * Métodos estáticos:
+ * - checkAllClicks: Verifica se todos os botões foram pressionados
+ * - resetDynamicInstances: Reseta todos os botões dinâmicos
+ * - resetAllInstances: Reseta todos os botões estáticos
+ */
 class ClickButton {
   int pin;
   bool pressed;

@@ -1,6 +1,13 @@
 #ifndef _LDE_H_
 #define _LDE_H_
 
+/*
+  * Estrutura de nó para a Lista Duplamente Encadeada
+  * - Contém um valor do tipo genérico
+  * - Contém referências para o nó anterior e próximo
+  * - Construtor que inicializa o valor e as referências
+  * - O destrutor não é necessário, pois a lista se encarrega de liberar a memória
+ */
 template <class T>
 class LDENode {
   public:
@@ -14,6 +21,26 @@ class LDENode {
   }
 };
 
+/*
+  * Lista Duplamente Encadeada
+  * Propriedades:
+  * - length: tamanho da lista
+  * - head: referência para o primeiro nó
+  * - tail: referência para o último nó
+  * Métodos:
+  * - size(): retorna o tamanho da lista
+  * - first(): retorna o valor do primeiro nó
+  * - last(): retorna o valor do último nó
+  * - push(T value): insere um valor no início da lista
+  * - pushBack(T value): insere um valor no final da lista
+  * - pop(): remove o primeiro nó e retorna o valor
+  * - popBack(): remove o último nó e retorna o valor
+  * - remove(size_t index): remove o nó na posição index e retorna o valor
+  * - getIndex(T value, bool (*eval)(T a, T b)): retorna o índice do valor na lista
+  * - clear(): remove todos os nós da lista
+  * - show(): retorna uma string com os valores da lista
+  * - forEach(void (*f)(T, void* params), void* params): executa uma função para cada nó
+  */
 template <class T>
 class LDE {
   size_t length;

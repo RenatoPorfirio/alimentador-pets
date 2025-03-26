@@ -8,12 +8,11 @@ MenuScreen::MenuScreen(DisplayControl* display) {
 }
  
 void MenuScreen::begin(DisplayControl* display) {
-  optionsQnt = 5;
+  optionsQnt = 4;
   options[0] = String("Listar horarios");
   options[1] = String("Agendar horario");
   options[2] = String("Remover horario");
   options[3] = String("Config. acao");
-  options[4] = String("Config. relogio");
   this->display = display;
   setup();
 }
@@ -89,6 +88,9 @@ void MenuScreen::setup() {
         break;
       case 2:
         setCurrentScreen(new RemoveTimeScreen((DisplayControl*)params));
+        break;
+      case 3:
+        setCurrentScreen(new ActionSetupScreen((DisplayControl*)params));
         break;
       default:
         break;

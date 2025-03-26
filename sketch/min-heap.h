@@ -1,6 +1,25 @@
 #ifndef _MIN_HEAP_H_
 #define _MIN_HEAP_H_
 
+/*
+  * MinHeap
+  * Estrutura de dados de heap mínimo
+  * Propriedades:
+  * - data: array de valores do tipo genérico
+  * - capacity: capacidade máxima do array
+  * - length: quantidade de elementos no array
+  * Métodos:
+  * - size(): retorna o tamanho do array
+  * - isEmpty(): verifica se o array está vazio
+  * - push(T value): insere um valor no array
+  * - top(): retorna o menor valor do array
+  * - pop(): remove e retorna o menor valor do array
+  * - clear(): remove todos os valores do array
+  * - show(): retorna uma string com os valores do array
+  * - forEach(void (*f)(T, void* params), void* params): executa uma função para cada valor
+  * - remove(T value, bool (*cmp)(T a, T b)): remove um valor do array
+  * - copy(): retorna uma cópia do array
+  */
 template <class T>
 class MinHeap {
 private:

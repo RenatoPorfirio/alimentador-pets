@@ -8,14 +8,50 @@
 
 #include <RTClib.h>
 
+/*
+ * Modulo de configuração de horários
+ * - Utiliza RTC_DS1307 para controle de tempo
+ * - Utiliza TimeRegManager para gerenciar horários de alimentação
+ * - Utiliza MinHeap para organizar os horários
+ * - Utiliza EnhancedTimeSpan para controlar o tempo restante
+ * - Utiliza EnhancedDateTime para controlar os horários
+ * - Utiliza TimeData para armazenar os horários
+ */
+
 RTC_DS1307 rtc;
 TimeRegManager timeRegManager;
 MinHeap<EnhancedDateTime*> timeQueue;
 EnhancedTimeSpan timeRemaining;
 
+/*
+  * Adiciona um horário de alimentação
+  * - Adiciona o horário no TimeRegManager
+  * - Adiciona o horário na fila de horários
+  * - Atualiza o tempo restante
+  * @param td horário de alimentação
+ */
 void addTime(TimeData& td);
+
+/*
+  * Configuração inicial do módulo de tempo
+  * - Inicializa RTC
+  * - Carrega horários de alimentação
+  * - Adiciona horários na fila
+  * - Atualiza o tempo restante
+ */
 void setupTime();
+
+/*
+  * Converte um horário de alimentação em uma string formatada
+  * @param td horário de alimentação
+  * @param showSeconds exibir segundos
+  * @return string formatada
+ */
 String timeDataToString(TimeData& td, bool showSeconds=false);
+
+/*
+  * Atualiza o tempo restante
+ */
 void timeRemainingUpdate();
 
 

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>README</title>
+</head>
+<body>
+    <h1 id="alimentador-de-pets">Alimentador de PETs</h1>
+    <h2 id="1-proposta-do-projeto">1. Proposta do projeto</h2>
+    <p>A ideia é criar um alimentador de pets programável, no qual é possível indicar os horários de alimentação e a quantidade de tempo que a porta de vazão do alimentador ficará aberta, possibilitando dosar a quantidade de comida despejada.</p>
+    <h2 id="2-configura-es">2. Configurações</h2>
+    <p>O código em questão foi contruído com base no seguinte setup:  </p>
+    <ul>
+    <li>1 x Placa Arduino Mega;</li>
+    <li>1 x Display OLED Adafruit ssd1306;</li>
+    <li>1 x Módulo RTC DS1307;</li>
+    <li>6 x Botões;</li>
+    <li>1 x Resistor 100R;</li>
+    <li>1 x Bateria 5V;</li>
+    <li>1 x Motor Servo;</li>
+    </ul>
+    <p>Simulador utilizado: <a href="https://simulide.com/p/">SimulIDE</a></p>
+    <h2 id="3-funcionamento">3. Funcionamento</h2>
+    <p>Ao iniciar o sistema pela primeira vez, verá a seguinte tela:
+    <img src="./img/tela_in_not_config.png" alt=""></p>
+    <p>Como não há horários registrados na memória, é necessário configurar um primeiro.
+    Primeiramente, vamos ao menu através do botão MENU:
+    <img src="./img/tela_menu.png" alt=""></p>
+    <p>Agende um horário para a rotina de alimentação na opção 2. Aparecerá a seguinte tela:
+    <img src="./img/tela_add_time.png" alt=""></p>
+    <p>Após o agendamento, será direcionado para a tela de apresentação do tempo restante para o próximo acionamento.
+    <img src="./img/tela_display_time.png" alt=""></p>
+    <p>Caso queira remover algum agendamento, vá ao menu e escolha a opção 3. Aparecerá a tela:
+    <img src="./img/tela_rem.png" alt=""></p>
+    <p>Por fim, uma vez que o horário agendado mais próximo for atingido, a rotina de alimentação será iniciada e o mesmo horário reagendado para o próximo dia.</p>
+    <p><img src="./img/tela_routine.png" alt=""></p>
+    <h2 id="4-observa-es">4. Observações</h2>
+    <p>O sistema tem preservamento de memória e autoconfiguração, logo, as configurações do usuário permanecem após a reinicialização da placa, e caso não existam, serão configuradas automaticamente (se necessário).</p>
+    <p>Atentar também ao botão forward no simulador, que por algum motivo, costuma aparecer desconectado.</p>
+</body>
+</html>

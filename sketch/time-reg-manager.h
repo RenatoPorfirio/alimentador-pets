@@ -5,12 +5,33 @@
 
 #define TIME_REG_LIMIT 5
 
+/*
+ * Estrutura de dados para armazenar horários
+ * - Contém horas, minutos e segundos
+ */
 typedef struct {
   int8_t hr;
   int8_t min;
   int8_t sec;
 } TimeData;
 
+/*
+ * TimeRegManager
+ * Classe para gerenciar horários de alimentação
+ * Propriedades:
+ * - reg: array de horários
+ * - regQnt: quantidade de horários
+ * Métodos:
+ * - begin(): inicializa o gerenciador
+ * - memClear(): limpa a memória
+ * - addTimeData(uint8_t hour, uint8_t minute, uint8_t second): adiciona um horário
+ * - removeTimeData(int8_t index): remove um horário
+ * - getTimeReg(): retorna o array de horários
+ * - getTimeRegCopy(): retorna uma cópia do array de horários
+ * - getTimeRegQnt(): retorna a quantidade de horários
+ * - isFull(): verifica se o array está cheio
+ * - isEmpty(): verifica se o array está vazio
+ */
 class TimeRegManager {
   static TimeData nulltimedata;
   TimeData reg[TIME_REG_LIMIT];

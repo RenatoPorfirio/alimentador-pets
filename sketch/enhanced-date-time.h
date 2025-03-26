@@ -3,6 +3,10 @@
 
 #include <RTClib.h>
 
+/**
+ * Classe que extende a classe DateTime do RTClib
+ * Adiciona um índice para identificação do objeto
+ */
 class EnhancedDateTime : public DateTime {
   public:
     int8_t index;
