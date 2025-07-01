@@ -1,4 +1,5 @@
 # Alimentador de PETs
+Projeto final para conclusão da disciplina "Fundamentos de Sistemas Embarcados".
 
 ## 1. Proposta do projeto
 
